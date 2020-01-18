@@ -1,0 +1,20 @@
+- unless @book.errors.empty?
+	Failed to #{controller.action_name} book:
+	%ul
+		- @book.errors.full_messages.each do |error|
+			%li= error
+
+= label :book, :title, 'Title:'
+= text_field :book, :title
+
+= label :book, :genre, 'Genre:'
+= select :book, :genre, Book::GENRES
+
+= label :book, :isbn, 'ISBN Number:'
+= text_field :book, :isbn
+
+= label :book, :publish_date, 'Publishing Date:'
+= date_select :book, :publish_date
+
+= label :book, :description, 'Description'
+= text_area :book, :description, size: "30x10"

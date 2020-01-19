@@ -1,6 +1,10 @@
 %h2 Details about #{@book.title}
 
 %ul#details
+	%li
+		Author:
+		= @book.author
+
 	%li 
 		Genre:
 		= @book.genre
@@ -16,6 +20,10 @@
 %h3 Description:
 %p#description= @book.description
 
+= link_to 'Find Books With Same Author', same_author_path(@book)
+%br
 = link_to 'Edit info', edit_book_path(@book)
+%br
 = link_to 'Delete', book_path(@book), :method => :delete
+%br
 = link_to 'Back to book list', books_path

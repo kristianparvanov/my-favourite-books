@@ -7,6 +7,9 @@
 = label :book, :title, 'Title:'
 = text_field :book, :title
 
+= label :book, :author, 'Author:'
+= text_field :book, :author
+
 = label :book, :genre, 'Genre:'
 = select :book, :genre, Book::GENRES
 
@@ -14,7 +17,6 @@
 = text_field :book, :isbn
 
 = label :book, :publish_date, 'Publishing Date:'
-= date_select :book, :publish_date
-
+= date_select :book, :publish_date, {:start_year => 1900, :end_year => Date.today.year}
 = label :book, :description, 'Description'
 = text_area :book, :description, size: "30x10"

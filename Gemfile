@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #use Haml for templatesgem 'haml'
 gem 'haml'
+
+gem 'isbn_validation'

@@ -40,7 +40,7 @@ class BooksController < ApplicationController
 
 	def create
 		params.require(:book)
-		permitted = params[:book].permit(:title, :genre, :isbn, :publish_date, :description)
+		permitted = params[:book].permit(:title, :genre, :isbn, :publish_date, :description, :genres, :author)
 		
 		@book = Book.new(permitted)
 
@@ -62,9 +62,9 @@ class BooksController < ApplicationController
 		
 		params.require(:book)
 		params.require(:book)
-		permitted = params[:book].permit(:title, :genre, :isbn, :publish_date, :description)
+		permitted = params[:book].permit(:title, :genre, :isbn, :publish_date, :description, :genres, :author)
 		
-		if @book.update_attributes(permitted)
+		if @book.update(permitted)
 			flash[:notice] = "#{@book.title} was successfully updated."
 
 			redirect_to books_path(@book)
@@ -82,9 +82,11 @@ class BooksController < ApplicationController
 		redirect_to books_path
 	end
 
-	def reset
-		reset_session
-
-		redirect_to books_path
+	def same_author
+		@book = Book.find(params[:id])
+		if !@book.author.present?
+			return redirect_to books_path, :alert => "'#{@book.title}' has no author info"
+		end
+			@books = Book.where(author: @book.author)
 	end
 end

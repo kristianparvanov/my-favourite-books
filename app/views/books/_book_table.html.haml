@@ -5,7 +5,7 @@
 			%th Author
 			%th Genre
 			%th ISBN number
-			%th{:class => @date_header}= link_to 'Publish Date', books_path(:sort => 'publish_date'), :id => 'publish_date_header'
+			%th{:class => @publish_date_header}= link_to 'Publish Date', books_path(:sort => 'publish_date'), :id => 'publish_date_header'
 			%th More Info
 	%tbody
 	- @books.each do |book|

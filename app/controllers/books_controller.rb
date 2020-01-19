@@ -11,8 +11,8 @@ class BooksController < ApplicationController
 		case sort
 			when 'title'
 				ordering, @title_header = {:title => :asc}, 'hilite'
-			when 'release_date'      
-				ordering, @date_header = {:release_date => :asc}, 'hilite'
+			when 'publish_date'      
+				ordering, @publish_date_header = {:publish_date => :asc}, 'hilite'
 		end
  
 		@selected_genres = permitted[:genres] || session[:genres] || {}
